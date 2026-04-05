@@ -169,28 +169,6 @@ export default function AnalysisPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl border border-gray-200 p-6">
-                <h3 className="font-semibold text-[#111] mb-5">주요 인사이트</h3>
-                <div className="space-y-4">
-                  {[
-                    { title: '석유 에너지 분야 최대 시장', desc: '전체 낙찰 금액의 30% 이상을 DLA ENERGY가 발주하는 석유/항공유 공급이 차지', tag: '높은 금액' },
-                    { title: '건설 분야 다수 발주', desc: 'USACE를 통한 시설 건설/보수 공사가 건수 기준 최다. 경쟁 심화 예상', tag: '경쟁 심화' },
-                    { title: '급식 서비스 정기 발주', desc: '매년 Q1~Q2에 집중 발주. 2026년 3~4월 공고 예상', tag: '예측 가능' },
-                    { title: 'IT 인프라 수요 증가', desc: '전년 대비 IT 관련 낙찰 건수 45% 증가. 사이버보안 수요 급증', tag: '성장 분야' },
-                  ].map(insight => (
-                    <div key={insight.title} className="flex items-start gap-3 p-3 rounded-lg bg-gray-50">
-                      <div className="w-1 h-full bg-[#111] rounded-full flex-shrink-0 self-stretch min-h-8" />
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-sm font-semibold text-[#111]">{insight.title}</span>
-                          <span className="text-xs px-2 py-0.5 bg-[#111] text-white rounded-full">{insight.tag}</span>
-                        </div>
-                        <p className="text-xs text-gray-600">{insight.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         )}
