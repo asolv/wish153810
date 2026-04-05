@@ -118,9 +118,9 @@ export default function BidDetailPage({ params }: { params: Promise<{ id: string
               <div className="flex items-start gap-2">
                 <DollarSign className="w-4 h-4 text-gray-400 mt-0.5" />
                 <div>
-                  <div className="text-xs text-gray-400">{bid.status === 'awarded' ? '낙찰 금액' : '추정 금액'}</div>
+                  <div className="text-xs text-gray-400">낙찰 금액</div>
                   <div className="text-sm font-semibold text-[#111] mt-0.5">
-                    {bid.status === 'awarded' ? formatValue(bid.awardAmount) : formatValue(bid.estimatedValue)}
+                    {bid.status === 'awarded' && bid.awardAmount ? formatValue(bid.awardAmount) : '-'}
                   </div>
                 </div>
               </div>

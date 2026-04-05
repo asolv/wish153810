@@ -35,7 +35,7 @@ export default function BidsPage() {
   const [naicsFilter, setNaicsFilter] = useState('');
   const [agencyFilter, setAgencyFilter] = useState('');
   const [savedOnly, setSavedOnly] = useState(false);
-  const [sortBy, setSortBy] = useState<'postedDate' | 'responseDeadline' | 'estimatedValue'>('postedDate');
+  const [sortBy, setSortBy] = useState<'postedDate' | 'responseDeadline'>('postedDate');
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set(mockBids.filter(b => b.saved).map(b => b.id)));
   const [showFilters, setShowFilters] = useState(false);
 
@@ -57,7 +57,6 @@ export default function BidsPage() {
     result.sort((a, b) => {
       if (sortBy === 'postedDate') return b.postedDate.localeCompare(a.postedDate);
       if (sortBy === 'responseDeadline') return a.responseDeadline.localeCompare(b.responseDeadline);
-      if (sortBy === 'estimatedValue') return (b.estimatedValue || 0) - (a.estimatedValue || 0);
       return 0;
     });
     return result;
@@ -116,7 +115,6 @@ export default function BidsPage() {
             >
               <option value="postedDate">게시일순</option>
               <option value="responseDeadline">마감일순</option>
-              <option value="estimatedValue">금액순</option>
             </select>
             <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
           </div>
@@ -250,12 +248,7 @@ export default function BidsPage() {
                             <div className="text-sm font-semibold text-blue-600">{formatValue(bid.awardAmount)}</div>
                             <div className="text-xs text-gray-400">낙찰금액</div>
                           </div>
-                        ) : bid.estimatedValue ? (
-                          <div>
-                            <div className="text-sm font-semibold text-gray-700">{formatValue(bid.estimatedValue)}</div>
-                            <div className="text-xs text-gray-400">추정금액</div>
-                          </div>
-                        ) : <span className="text-xs text-gray-400">미공개</span>}
+                        ) : <span className="text-xs text-gray-400">-</span>}
                       </td>
                       <td className="px-4 py-4 text-xs text-gray-500">{bid.postedDate}</td>
                       <td className="px-4 py-4">

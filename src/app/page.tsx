@@ -142,12 +142,6 @@ export default function DashboardPage() {
                     <div className="text-xs md:text-sm font-medium text-[#111] line-clamp-2 group-hover:underline">{bid.title}</div>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-xs text-gray-400 truncate max-w-[120px] md:max-w-none">{bid.agency}</span>
-                      {bid.estimatedValue && (
-                        <>
-                          <span className="text-xs text-gray-300">·</span>
-                          <span className="text-xs font-medium text-gray-600">{formatValue(bid.estimatedValue)}</span>
-                        </>
-                      )}
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
@@ -177,9 +171,6 @@ export default function DashboardPage() {
                     <div className="flex-1 min-w-0">
                       <div className="text-xs md:text-sm font-medium text-[#111] line-clamp-2 group-hover:underline">{bid.title}</div>
                       <div className="text-xs text-gray-400 mt-0.5 truncate">{bid.agency}</div>
-                      {bid.estimatedValue && (
-                        <div className="text-xs font-semibold text-gray-600 mt-0.5">{formatValue(bid.estimatedValue)}</div>
-                      )}
                     </div>
                   </Link>
                 );

@@ -16,7 +16,6 @@ export function exportBidsToExcel(bids: Bid[], filename = '입찰공고') {
     '부서': bid.office,
     'NAICS코드': bid.naicsCode,
     'NAICS설명': bid.naicsDescription,
-    '추정금액': formatCurrency(bid.estimatedValue),
     '낙찰금액': formatCurrency(bid.awardAmount),
     '낙찰업체': bid.awardee || '-',
     '게시일': bid.postedDate,
