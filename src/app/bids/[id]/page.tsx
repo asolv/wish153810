@@ -168,18 +168,6 @@ export default function BidDetailPage({ params }: { params: Promise<{ id: string
                 </div>
               )}
 
-              {/* Keywords */}
-              {bid.keywords.length > 0 && (
-                <div className="bg-white rounded-xl border border-gray-200 p-6">
-                  <h2 className="font-semibold text-[#111] mb-3">키워드</h2>
-                  <div className="flex flex-wrap gap-2">
-                    {bid.keywords.map(k => (
-                      <span key={k} className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">{k}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* Similar Bids */}
               {similarBids.length > 0 && (
                 <div className="bg-white rounded-xl border border-gray-200 p-6">
