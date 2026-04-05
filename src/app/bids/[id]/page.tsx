@@ -1,7 +1,7 @@
 'use client';
 import { use } from 'react';
 import { mockBids } from '@/lib/mockData';
-import { StatusBadge, TypeBadge, UsfkBadge } from '@/components/ui/Badge';
+import { StatusBadge, TypeBadge } from '@/components/ui/Badge';
 import Header from '@/components/layout/Header';
 import Link from 'next/link';
 import { ArrowLeft, MapPin, Calendar, DollarSign, User, Mail, Phone, ExternalLink, Bookmark, BookmarkCheck, Share2, FileText } from 'lucide-react';
@@ -61,7 +61,6 @@ export default function BidDetailPage({ params }: { params: Promise<{ id: string
                 <div className="flex items-center gap-2 flex-wrap mb-3">
                   <TypeBadge type={bid.type} />
                   <StatusBadge status={bid.status} />
-                  {bid.isUsfk && <UsfkBadge />}
                   {bid.setAside && (
                     <span className="px-2 py-0.5 text-xs bg-purple-50 text-purple-700 border border-purple-200 rounded font-medium">
                       {bid.setAside}

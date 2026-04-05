@@ -1,7 +1,7 @@
 'use client';
 import Header from '@/components/layout/Header';
 import { mockStats, mockBids, mockAwardData } from '@/lib/mockData';
-import { StatusBadge, TypeBadge, UsfkBadge } from '@/components/ui/Badge';
+import { StatusBadge, TypeBadge } from '@/components/ui/Badge';
 import Link from 'next/link';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
@@ -138,7 +138,6 @@ export default function DashboardPage() {
                     <div className="flex items-center gap-1.5 mb-1 flex-wrap">
                       <TypeBadge type={bid.type} />
                       <StatusBadge status={bid.status} />
-                      {bid.isUsfk && <UsfkBadge />}
                     </div>
                     <div className="text-xs md:text-sm font-medium text-[#111] line-clamp-2 group-hover:underline">{bid.title}</div>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">

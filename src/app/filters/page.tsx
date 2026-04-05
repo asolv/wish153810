@@ -48,7 +48,7 @@ const defaultFilters: FilterConfig[] = [
 ];
 
 const NOTICE_TYPE_OPTIONS = ['Solicitation', 'Presolicitation', 'Award Notice', 'Sources Sought', 'Combined Synopsis/Solicitation'];
-const AGENCY_OPTIONS = ['IMCOM', 'DLA TROOP SUPPORT', 'DLA ENERGY', 'USACE', 'PACAF', 'USFK', '8TH ARMY'];
+const AGENCY_OPTIONS = ['IMCOM', 'DLA TROOP SUPPORT', 'DLA ENERGY', 'USACE', 'PACAF', '8TH ARMY'];
 
 export default function FiltersPage() {
   const [filters, setFilters] = useState<FilterConfig[]>(defaultFilters);

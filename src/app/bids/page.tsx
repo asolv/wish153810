@@ -2,7 +2,7 @@
 import { useState, useMemo } from 'react';
 import Header from '@/components/layout/Header';
 import { mockBids } from '@/lib/mockData';
-import { StatusBadge, TypeBadge, UsfkBadge } from '@/components/ui/Badge';
+import { StatusBadge, TypeBadge } from '@/components/ui/Badge';
 import { exportBidsToExcel } from '@/lib/excelExport';
 import Link from 'next/link';
 import { Search, Filter, Download, Bookmark, BookmarkCheck, ChevronDown, X } from 'lucide-react';
@@ -35,14 +35,12 @@ export default function BidsPage() {
   const [naicsFilter, setNaicsFilter] = useState('');
   const [agencyFilter, setAgencyFilter] = useState('');
   const [savedOnly, setSavedOnly] = useState(false);
-  const [usfkOnly, setUsfkOnly] = useState(true);
   const [sortBy, setSortBy] = useState<'postedDate' | 'responseDeadline' | 'estimatedValue'>('postedDate');
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set(mockBids.filter(b => b.saved).map(b => b.id)));
   const [showFilters, setShowFilters] = useState(false);
 
   const filtered = useMemo(() => {
     let result = [...mockBids];
-    if (usfkOnly) result = result.filter(b => b.isUsfk);
     if (savedOnly) result = result.filter(b => savedIds.has(b.id));
     if (search) result = result.filter(b =>
       b.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -63,7 +61,7 @@ export default function BidsPage() {
       return 0;
     });
     return result;
-  }, [search, selectedStatuses, selectedTypes, naicsFilter, agencyFilter, savedOnly, usfkOnly, savedIds, sortBy]);
+  }, [search, selectedStatuses, selectedTypes, naicsFilter, agencyFilter, savedOnly, savedIds, sortBy]);
 
   function toggleStatus(s: BidStatus) {
     setSelectedStatuses(prev => prev.includes(s) ? prev.filter(x => x !== s) : [...prev, s]);
@@ -104,11 +102,6 @@ export default function BidsPage() {
             필터
             {activeFilters > 0 && <span className="bg-white text-[#111] text-xs px-1.5 py-0.5 rounded-full font-bold">{activeFilters}</span>}
           </button>
-
-          <label className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm cursor-pointer hover:border-gray-300 transition-colors">
-            <input type="checkbox" checked={usfkOnly} onChange={e => setUsfkOnly(e.target.checked)} className="accent-black" />
-            USFK만 보기
-          </label>
 
           <label className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm cursor-pointer hover:border-gray-300 transition-colors">
             <input type="checkbox" checked={savedOnly} onChange={e => setSavedOnly(e.target.checked)} className="accent-black" />
@@ -239,7 +232,6 @@ export default function BidsPage() {
                         <Link href={`/bids/${bid.id}`} className="group">
                           <div className="text-sm font-medium text-[#111] group-hover:underline line-clamp-2">{bid.title}</div>
                           <div className="text-xs text-gray-400 mt-1">{bid.agency} · {bid.solicitationNumber}</div>
-                          {bid.isUsfk && <UsfkBadge />}
                         </Link>
                       </td>
                       <td className="px-4 py-4">

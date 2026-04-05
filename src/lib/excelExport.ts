@@ -6,7 +6,7 @@ function formatCurrency(value?: number) {
   return `$${value.toLocaleString()}`;
 }
 
-export function exportBidsToExcel(bids: Bid[], filename = 'USFK_입찰공고') {
+export function exportBidsToExcel(bids: Bid[], filename = '입찰공고') {
   const data = bids.map((bid) => ({
     '공고번호': bid.solicitationNumber,
     '공고제목': bid.title,
@@ -24,7 +24,6 @@ export function exportBidsToExcel(bids: Bid[], filename = 'USFK_입찰공고') {
     '수행지역': `${bid.placeOfPerformance.city}, ${bid.placeOfPerformance.country}`,
     '담당자': bid.contactName || '-',
     '담당자이메일': bid.contactEmail || '-',
-    'USFK관련': bid.isUsfk ? '예' : '아니오',
   }));
 
   const ws = XLSX.utils.json_to_sheet(data);
@@ -40,7 +39,7 @@ export function exportBidsToExcel(bids: Bid[], filename = 'USFK_입찰공고') {
   XLSX.writeFile(wb, `${filename}_${new Date().toISOString().slice(0, 10)}.xlsx`);
 }
 
-export function exportAwardsToExcel(awards: AwardData[], filename = 'USFK_낙찰현황') {
+export function exportAwardsToExcel(awards: AwardData[], filename = '낙찰현황') {
   const data = awards.map((award) => ({
     '연도': award.year,
     '월': award.month,
@@ -58,7 +57,7 @@ export function exportAwardsToExcel(awards: AwardData[], filename = 'USFK_낙찰
   XLSX.writeFile(wb, `${filename}_${new Date().toISOString().slice(0, 10)}.xlsx`);
 }
 
-export function exportCompetitorsToExcel(competitors: CompetitorData[], filename = 'USFK_경쟁사분석') {
+export function exportCompetitorsToExcel(competitors: CompetitorData[], filename = '경쟁사분석') {
   const data = competitors.map((c) => ({
     '업체명': c.name,
     '총 낙찰 건수': c.totalAwards,
